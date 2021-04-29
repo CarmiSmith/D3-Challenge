@@ -163,3 +163,35 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
       });
   return circlesGroup;
 };
+
+// Retrieve data from the CSV file and execute everything below
+d3.csv("assets/data/data.csv").then(function(data, err) {
+    
+  if (err) throw err;
+
+  // parse data
+  data.forEach(d => {
+    d.poverty = +d.poverty;
+    data.povertyMoe = +data.povertyMoe;
+    d.age = +d.age;
+    data.ageMoe = +data.ageMoe;
+    d.income = +d.income;
+    data.incomeMoe = +data.incomeMoe;
+    d.healthcare = +d.healthcare;
+    data.healthcareLow = +data. healthcareLow;
+    data.healthcareHigh = +data.healthcareHigh;
+    d.obesity = +d.obesity;
+    data.obesityLow = +data.obesityLow;
+    data.obesityHigh = +data.obesityHigh;
+    d.smokes = +d.smokes;
+    data.smokesLow = +data.smokesLow;
+    data.smokesHigh = +data.smokesHigh;
+  });
+
+
+
+  
+
+}).catch(function(error) {
+  console.log(error);
+});
