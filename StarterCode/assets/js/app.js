@@ -316,6 +316,44 @@ xlabelsGroup.selectAll("text")
     // updates tooltips with new info
     circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup);
 
+    // changes classes to change bold text
+    if (chosenXAxis === "age") {
+      AgeLabel
+        .classed("active", true)
+        .classed("inactive", false);
+      PovertyLabel
+        .classed("active", false)
+        .classed("inactive", true);
+      IncomeLabel
+        .classed("active", false)
+        .classed("inactive", true);
+    }
+    else if(chosenXAxis === 'income'){
+      IncomeLabel
+        .classed("active", true)
+        .classed("inactive", false);
+      PovertyLabel
+        .classed("active", false)
+        .classed("inactive", true);
+      AgeLabel
+        .classed("active", false)
+        .classed("inactive", true);
+    }
+    else {
+      IncomeLabel
+        .classed("active", false)
+        .classed("inactive", true);
+      AgeLabel
+        .classed("active", false)
+        .classed("inactive", true);
+      PovertyLabel
+        .classed("active", true)
+        .classed("inactive", false);
+    }
+  }
+});
+
+
 
 
 }).catch(function(error) {
