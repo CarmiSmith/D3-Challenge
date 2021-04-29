@@ -139,7 +139,7 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
 
   var toolTip = d3.tip()
     .attr("class", "d3-tip")
-    .offset([80, -60])
+    .offset([120, -60])
     .style("color", "black")
     .style("background", "white")
     .style("border", "solid")
