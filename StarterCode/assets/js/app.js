@@ -89,7 +89,7 @@ function renderYCircles(circlesGroup, newYScale, chosenYAxis) {
 
   circlesGroup.transition()
     .duration(1000)
-    .attr("cy", d => newYScale(d[chosenYAxis]))
+    .attr("cy", d => newYScale(d[chosenYAxis])+5)
   return circlesGroup;
 }
 // Updating text location
@@ -138,7 +138,7 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup, textGroup) {
   }
 
   var toolTip = d3.tip()
-    .attr("class", "d3-tip")
+    .attr("class", "toolTip")
     .offset([120, -60])
     .style("color", "black")
     .style("background", "white")
@@ -162,13 +162,13 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup, textGroup) {
       toolTip.hide(data);
       })
 
-  textGroup
-      .on("mouseover", function (data) {
-          toolTip.show(data, this)
-      })
-      .on("mouseout", function (data) {
-          toolTip.hide(data)
-      })
+  // textGroup
+  //     .on("mouseover", function (data) {
+  //         toolTip.show(data)
+  //     })
+  //     .on("mouseout", function (data) {
+  //         toolTip.hide(data, this)
+  //     })
   return circlesGroup;
 };
 
@@ -180,7 +180,7 @@ d3.csv("assets/data/data.csv").then(function(data, err) {
   // parse data
   data.forEach(d => {
     d.poverty = +d.poverty;
-    data.povertyMoe = +data.povertyMoe;
+    //data.povertyMoe = +data.povertyMoe;
     d.age = +d.age;
     //data.ageMoe = +data.ageMoe;
     d.income = +d.income;
@@ -314,7 +314,7 @@ xlabelsGroup.selectAll("text")
     circlesText = renderXText(circlesText, xLinearScale, chosenXAxis)  
 
     // updates tooltips with new info
-    circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup);
+    circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup, textGroup);
 
     // changes classes to change bold text
     if (chosenXAxis === "age") {
@@ -377,7 +377,7 @@ xlabelsGroup.selectAll("text")
       circlesText = renderYText(circlesText, yLinearScale, chosenYAxis) 
 
       // updates tooltips with new info
-      circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup);
+      circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup, textGroup);
 
       // changes classes to change bold text
       if (chosenYAxis === "obesity") {
