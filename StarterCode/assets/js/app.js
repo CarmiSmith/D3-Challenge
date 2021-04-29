@@ -184,8 +184,8 @@ d3.csv("assets/data/data.csv").then(function(data, err) {
     data.obesityLow = +data.obesityLow;
     data.obesityHigh = +data.obesityHigh;
     d.smokes = +d.smokes;
-    data.smokesLow = +data.smokesLow;
-    data.smokesHigh = +data.smokesHigh;
+    //data.smokesLow = +data.smokesLow;
+    //data.smokesHigh = +data.smokesHigh;
   });
 
    // xLinearScale function above csv import
