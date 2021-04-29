@@ -290,6 +290,32 @@ var HealthLabel = ylabelsGroup.append("text")
 // updateToolTip function above csv import
 circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup);
 
+// x axis labels event listener
+xlabelsGroup.selectAll("text")
+  .on("click", function() {
+  // get value of selection
+  var value = d3.select(this).attr("value");
+  if (value !== chosenXAxis) {
+
+    // replaces chosenXAxis with value
+    chosenXAxis = value;
+
+    // functions here found above csv import
+    // updates x scale for new data
+    xLinearScale = xScale(data, chosenXAxis);
+
+    // updates x axis with transition
+    xAxis = renderXAxes(xLinearScale, xAxis);
+
+    // updates circles with new x values
+    circles = renderXCircles(circles, xLinearScale, chosenXAxis);
+
+    // updating text within circles
+    circlesText = renderXText(circlesText, xLinearScale, chosenXAxis)  
+
+    // updates tooltips with new info
+    circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup);
+
 
 
 }).catch(function(error) {
