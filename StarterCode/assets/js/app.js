@@ -174,9 +174,9 @@ d3.csv("assets/data/data.csv").then(function(data, err) {
     d.poverty = +d.poverty;
     data.povertyMoe = +data.povertyMoe;
     d.age = +d.age;
-    data.ageMoe = +data.ageMoe;
+    //data.ageMoe = +data.ageMoe;
     d.income = +d.income;
-    data.incomeMoe = +data.incomeMoe;
+    //data.incomeMoe = +data.incomeMoe;
     d.healthcare = +d.healthcare;
     //data.healthcareLow = +data. healthcareLow;
     //data.healthcareHigh = +data.healthcareHigh;
