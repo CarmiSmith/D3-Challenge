@@ -353,6 +353,31 @@ xlabelsGroup.selectAll("text")
   }
 });
 
+  // y axis labels event listener
+  ylabelsGroup.selectAll("text")
+   .on("click", function() {
+    // get value of selection
+    var value = d3.select(this).attr("value");
+    if (value !== chosenYAxis) {
+
+      // replaces chosenYAxis with value
+      chosenYAxis = value;
+
+      // functions here found above csv import
+      // updates y scale for new data
+      yLinearScale = yScale(data, chosenYAxis);
+
+      // updates x axis with transition
+      yAxis = renderYAxes(yLinearScale, yAxis);
+
+      // updates circles with new y values
+      circles = renderYCircles(circles, yLinearScale, chosenYAxis);
+
+      // update text within circles
+      circlesText = renderYText(circlesText, yLinearScale, chosenYAxis) 
+
+      // updates tooltips with new info
+      circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup);
 
 
 
