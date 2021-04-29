@@ -178,8 +178,8 @@ d3.csv("assets/data/data.csv").then(function(data, err) {
     d.income = +d.income;
     data.incomeMoe = +data.incomeMoe;
     d.healthcare = +d.healthcare;
-    data.healthcareLow = +data. healthcareLow;
-    data.healthcareHigh = +data.healthcareHigh;
+    //data.healthcareLow = +data. healthcareLow;
+    //data.healthcareHigh = +data.healthcareHigh;
     d.obesity = +d.obesity;
     //data.obesityLow = +data.obesityLow;
     //data.obesityHigh = +data.obesityHigh;
