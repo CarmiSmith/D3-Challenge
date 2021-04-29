@@ -231,7 +231,7 @@ d3.csv("assets/data/data.csv").then(function(data, err) {
   var circlesText = circlesGroup.append("text")
     .text(d => d.abbr)
     .attr("dx", d => xLinearScale(d[chosenXAxis]))
-    .attr("dy", d => yLinearScale(d[chosenYAxis])+5) //to center the text in the circles
+    .attr("dy", d => yLinearScale(d[chosenYAxis])+5) // to center the text in the circles
     .classed('stateText', true);
 
   // Create group for three x-axis labels
@@ -378,6 +378,43 @@ xlabelsGroup.selectAll("text")
 
       // updates tooltips with new info
       circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup);
+
+      // changes classes to change bold text
+      if (chosenYAxis === "obesity") {
+        ObeseLabel
+          .classed("active", true)
+          .classed("inactive", false);
+        SmokesLabel
+          .classed("active", false)
+          .classed("inactive", true);
+        HealthLabel
+          .classed("active", false)
+          .classed("inactive", true);
+      }
+      else if(chosenYAxis === 'smokes'){
+        SmokesLabel
+          .classed("active", true)
+          .classed("inactive", false);
+        HealthLabel
+          .classed("active", false)
+          .classed("inactive", true);
+        ObeseLabel
+          .classed("active", false)
+          .classed("inactive", true);
+      }
+      else {
+        HealthLabel
+          .classed("active", true)
+          .classed("inactive", false);
+        SmokesLabel
+          .classed("active", false)
+          .classed("inactive", true);
+        ObeseLabel
+          .classed("active", false)
+          .classed("inactive", true);
+      }
+    }
+  });
 
 
 
