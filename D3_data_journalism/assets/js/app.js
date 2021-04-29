@@ -112,7 +112,7 @@ return circlesGroup;
 }
 
 // function used for updating circles group with new tooltip
-function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup, textGroup) {
+function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
 
   var xlabel;
   var ylabel;
@@ -297,7 +297,7 @@ xlabelsGroup.selectAll("text")
     circlesText = renderXText(circlesText, xLinearScale, chosenXAxis)  
 
     // updates tooltips with new info
-    circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup, textGroup);
+    circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup);
 
     // changes classes to change bold text
     if (chosenXAxis === "age") {
@@ -360,7 +360,7 @@ xlabelsGroup.selectAll("text")
       circlesText = renderYText(circlesText, yLinearScale, chosenYAxis) 
 
       // updates tooltips with new info
-      circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup, textGroup);
+      circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup);
 
       // changes classes to change bold text
       if (chosenYAxis === "obesity") {
