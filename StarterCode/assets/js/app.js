@@ -155,13 +155,13 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup, textGroup) {
   circlesGroup
     // mouseover event - show tooltip
       .on("mouseover", function(data) {
-      toolTip.show(data);
+      toolTip.show(data, this);
       })
     // on mouseout event - hide tooltip
       .on("mouseout", function(data) {
       toolTip.hide(data);
       })
-      
+
   textGroup
       .on("mouseover", function (data) {
           toolTip.show(data, this)
@@ -278,6 +278,17 @@ var SmokesLabel = ylabelsGroup.append("text")
   .attr("value", "smokes") // value to grab for event listener
   .classed("inactive", true)
   .text("Smokes (%)");
+
+var HealthLabel = ylabelsGroup.append("text")
+  .attr("y", -40)
+  .attr("x", -(height/2))
+  .attr("dy", "1em")
+  .attr("value", "healthcare") // value to grab for event listener
+  .classed("active", true)
+  .text("Lacks Healthcare (%)");
+
+// updateToolTip function above csv import
+circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup);
 
 
 
