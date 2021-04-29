@@ -138,7 +138,7 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
   }
 
   var toolTip = d3.tip()
-    .attr("class", "toolTip")
+    .attr("class", "d3-tip")
     .offset([80, -60])
     .style("color", "black")
     .style("background", "white")
@@ -207,7 +207,30 @@ d3.csv("assets/data/data.csv").then(function(data, err) {
   var yAxis = chartGroup.append("g")
       .call(leftAxis);
 
-      
+   // append initial circles
+   var circlesGroup = chartGroup.selectAll("circle")
+   .data(data)
+   .enter()
+   .append("g");
+
+  var circles = circlesGroup.append("circle")
+    .attr("cx", d => xLinearScale(d[chosenXAxis]))
+    .attr("cy", d => yLinearScale(d[chosenYAxis]))
+    .attr("r", 15)
+    .classed('stateCircle', true);
+
+  // append text inside circles
+  var circlesText = circlesGroup.append("text")
+    .text(d => d.abbr)
+    .attr("dx", d => xLinearScale(d[chosenXAxis]))
+    .attr("dy", d => yLinearScale(d[chosenYAxis])+5) //to center the text in the circles
+    .classed('stateText', true);
+
+  // Create group for three x-axis labels
+  var xlabelsGroup = chartGroup.append("g")
+    .attr("transform", `translate(${width / 2}, ${height})`);
+
+
 
 }).catch(function(error) {
   console.log(error);
