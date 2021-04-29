@@ -188,9 +188,13 @@ d3.csv("assets/data/data.csv").then(function(data, err) {
     data.smokesHigh = +data.smokesHigh;
   });
 
-
-
+   // xLinearScale function above csv import
+   var xLinearScale = xScale(data, chosenXAxis);
   
+   // Create y scale function
+   var yLinearScale = yScale(data, chosenYAxis);
+
+
 
 }).catch(function(error) {
   console.log(error);
