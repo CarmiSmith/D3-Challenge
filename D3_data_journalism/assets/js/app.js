@@ -89,7 +89,7 @@ function renderYCircles(circlesGroup, newYScale, chosenYAxis) {
 
   circlesGroup.transition()
     .duration(1000)
-    .attr("cy", d => newYScale(d[chosenYAxis])+5)
+    .attr("cy", d => newYScale(d[chosenYAxis]))
   return circlesGroup;
 }
 // Updating text location
@@ -140,8 +140,8 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup, textGroup) {
   var toolTip = d3.tip()
     .attr("class", "toolTip")
     .offset([120, -60])
-    .style("color", "black")
-    .style("background", "white")
+    .style("color", "white")
+    .style("background", "black")
     .style("border", "solid")
     .style("border-width", "1px")
     .style("border-radius", "5px")
@@ -161,14 +161,6 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup, textGroup) {
       .on("mouseout", function(data) {
       toolTip.hide(data);
       })
-
-  // textGroup
-  //     .on("mouseover", function (data) {
-  //         toolTip.show(data)
-  //     })
-  //     .on("mouseout", function (data) {
-  //         toolTip.hide(data, this)
-  //     })
   return circlesGroup;
 };
 
@@ -180,20 +172,11 @@ d3.csv("assets/data/data.csv").then(function(data, err) {
   // parse data
   data.forEach(d => {
     d.poverty = +d.poverty;
-    //data.povertyMoe = +data.povertyMoe;
     d.age = +d.age;
-    //data.ageMoe = +data.ageMoe;
     d.income = +d.income;
-    //data.incomeMoe = +data.incomeMoe;
     d.healthcare = +d.healthcare;
-    //data.healthcareLow = +data. healthcareLow;
-    //data.healthcareHigh = +data.healthcareHigh;
     d.obesity = +d.obesity;
-    //data.obesityLow = +data.obesityLow;
-    //data.obesityHigh = +data.obesityHigh;
     d.smokes = +d.smokes;
-    //data.smokesLow = +data.smokesLow;
-    //data.smokesHigh = +data.smokesHigh;
   });
 
   // xLinearScale function above csv import
