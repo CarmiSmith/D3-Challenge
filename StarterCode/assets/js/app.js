@@ -251,6 +251,27 @@ d3.csv("assets/data/data.csv").then(function(data, err) {
     .classed("inactive", true)
     .text("Household Income (Median)");
 
+// Create group for three y-axis labels
+var ylabelsGroup = chartGroup.append("g")
+  .attr("transform", "rotate(-90)")
+
+var ObeseLabel = ylabelsGroup.append("text")
+  .attr("y", -80)
+  .attr("x", -(height/2))
+  .attr("dy", "1em")
+  .attr("value", "obesity") // value to grab for event listener
+  .classed("inactive", true)
+  .text("Obese (%)");
+
+var SmokesLabel = ylabelsGroup.append("text")
+  .attr("y", -60)
+  .attr("x", -(height/2))
+  .attr("dy", "1em")
+  .attr("value", "smokes") // value to grab for event listener
+  .classed("inactive", true)
+  .text("Smokes (%)");
+
+
 
 }).catch(function(error) {
   console.log(error);
