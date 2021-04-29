@@ -112,7 +112,7 @@ return circlesGroup;
 }
 
 // function used for updating circles group with new tooltip
-function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
+function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup, textGroup) {
 
   var xlabel;
   var ylabel;
@@ -160,7 +160,15 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
     // on mouseout event - hide tooltip
       .on("mouseout", function(data) {
       toolTip.hide(data);
-      });
+      })
+      
+  textGroup
+      .on("mouseover", function (data) {
+          toolTip.show(data, this)
+      })
+      .on("mouseout", function (data) {
+          toolTip.hide(data)
+      })
   return circlesGroup;
 };
 
